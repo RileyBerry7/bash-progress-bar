@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+: "${N:=500}"         # default N=500 if unset
+DIR="bar"             # must already exist
+
+# optional: fail fast if DIR missing
+[ -d "$DIR" ] || { echo "Missing dir: $DIR" >&2; exit 1; }
+
+# simple (no zero-pad)
+touch "$DIR"/foo-{1..500}-cache
